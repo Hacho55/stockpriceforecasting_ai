@@ -1,0 +1,5 @@
+# Default ignored files
+
+env
+__pycache__
+.ipynb_checkpoints
