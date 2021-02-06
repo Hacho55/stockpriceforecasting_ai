@@ -516,7 +516,10 @@
         $('#divRMSE').text('');
         $('#lnkForecast').text('Procesando ...');
 
-        $.ajax('http://localhost:5000/api/iniciarSimulacion', {
+        var currentLocation = window.location.origin;
+        console.log(currentLocation); 
+
+        $.ajax(`${currentLocation}/api/iniciarSimulacion`, {
             type: 'POST',
             data: JSON.stringify({
                 "ticker": $('#tickerPredecir').val(),
@@ -569,9 +572,13 @@
               graficar(labels, valores, forecast, 'Canvas1', 'Comportamiento del activo y forecast');
               graficar2(labelsFinal, forecastFinal, 'Canvas2', 'Predicción para los próximos ' + $('#numeroDiasForecast').val() + ' días');
             },
-            error: function (xhr) {
+            error: function (xhr, textStatus, error) {
               $('#lnkForecast').text('Iniciar simulación');
               alert('Se produjo un error inesperado.');
+              console.log(xhr.responseText);
+              console.log(xhr.statusText);
+              console.log(textStatus);
+              console.log(error);
             }
         });
       });
