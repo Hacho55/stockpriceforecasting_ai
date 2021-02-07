@@ -33,7 +33,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-info topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-info mb-4 static-top shadow">
           <div class="col-md-12">
             <h1 class='text-light'>Forecast De Activos Financieros</h1>
           </div>
@@ -144,7 +144,7 @@
                 <span class="icon text-white-50">
                   <i class="fas fa-check"></i>
                 </span>
-                <span class="text" id="lnkForecast">Iniciar Predicción</span>
+                <span class="text" id="lnkForecast">Iniciar Visualización</span>
               </a>
           </div>
 
@@ -529,7 +529,7 @@
             }),
             contentType: "application/json",
             success: function (data) {
-              $('#lnkForecast').text('Iniciar simulación');
+              $('#lnkForecast').text('Iniciar Visualización');
               $('#divRMSE').text(JSON.parse(data['RMSE']));
               $('#spanACF').text(JSON.parse(data['ACF']));
               $('#spanPACF').text(JSON.parse(data['PACF']));
@@ -573,7 +573,7 @@
               graficar2(labelsFinal, forecastFinal, 'Canvas2', 'Predicción para los próximos ' + $('#numeroDiasForecast').val() + ' días');
             },
             error: function (xhr, textStatus, error) {
-              $('#lnkForecast').text('Iniciar simulación');
+              $('#lnkForecast').text('Iniciar Visualización');
               alert('Se produjo un error inesperado.');
               console.log(xhr.responseText);
               console.log(xhr.statusText);

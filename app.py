@@ -19,11 +19,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return redirect(url_for('home'))
-
-
-@app.route('/home', methods=['GET'])
-def home():
     return render_template("flask.html")
 
 
